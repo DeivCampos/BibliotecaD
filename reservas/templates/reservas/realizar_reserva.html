@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Realizar Reserva de {{ libro.titulo }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <p>¿Estás seguro de que deseas realizar la reserva de este libro?</p>
+    <button type="submit">Confirmar Reserva</button>
+</form>
+
+<a href="{% url 'listar_libros' %}">Volver a la lista de libros</a>
+{% endblock %}

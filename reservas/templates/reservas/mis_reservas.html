@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Mis Reservas</h2>
+
+<table>
+    <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Fecha de Reserva</th>
+    </tr>
+    {% for reserva in reservas %}
+    <tr>
+        <td>{{ reserva.libro.titulo }}</td>
+        <td>{{ reserva.libro.autor }}</td>
+        <td>{{ reserva.fecha_reserva }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">No tienes reservas.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{% url 'listar_libros' %}">Volver a la lista de libros</a>
+{% endblock %}

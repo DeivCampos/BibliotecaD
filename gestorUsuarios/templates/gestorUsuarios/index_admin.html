@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center text-primary font-weight-bold">Bienvenido, Administrador</h2>
+    <p class="text-center text-muted mb-4">Gestiona la biblioteca y accede a los servicios disponibles para administradores.</p>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-light">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">Panel de Control</h4>
+                </div>
+                <div class="card-body">
+                    <nav>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="{% url 'gestor_usuarios' %}" class="text-primary">Usuarios</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{% url 'listar_libros' %}" class="text-primary">Catálogo de Libros</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{% url 'historial_prestamos' %}" class="text-primary">Historial de Préstamos</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{% url 'ver_reservas' %}" class="text-primary">Reservas</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{% url 'ver_multas' %}" class="text-primary">Multas</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{% url 'historial_ventas' %}" class="text-primary">Historial de Ventas</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{% url 'reportes_generales' %}" class="text-primary">Reportes</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

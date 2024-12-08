@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Devolver Préstamo de {{ prestamo.libro.titulo }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <p>¿Estás seguro de que deseas devolver este libro?</p>
+    <button type="submit">Confirmar Devolución</button>
+</form>
+
+<a href="{% url 'historial_prestamos' %}">Volver al historial de préstamos</a>
+{% endblock %}

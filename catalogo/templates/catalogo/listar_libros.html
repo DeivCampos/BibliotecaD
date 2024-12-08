@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Lista de Libros</h2>
+
+<!-- Formulario de búsqueda -->
+<form method="get" action="{% url 'buscar_libros' %}">
+    <input type="text" name="q" placeholder="Buscar libros..." required>
+    <button type="submit">Buscar</button>
+</form>
+
+<table>
+    <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Categoría</th>
+        <th>Acciones</th>
+    </tr>
+    {% for libro in libros %}
+    <tr>
+        <td>{{ libro.titulo }}</td>
+        <td>{{ libro.autor }}</td>
+        <td>{{ libro.categoria }}</td>
+        <td>
+            {% if libro.cantidad_disponible > 0 %}
+                {% if not user.is_superuser %}
+                    <a href="{% url 'realizar_prestamo' libro.id %}">Realizar Préstamo</a>
+                {% endif %}
+            {% else %}
+                {% if not user.is_superuser %}  
+                    <a href="{% url 'realizar_reserva' libro.id %}">Realizar Reserva</a>
+                {% endif %}
+            {% endif %}
+            {% if user.is_superuser %}
+                <a href="{% url 'editar_libro' libro.id %}">Editar</a>
+                <a href="{% url 'eliminar_libro' libro.id %}">Eliminar</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% if user.is_superuser %}
+    <a href="{% url 'crear_libro' %}">Agregar Nuevo Libro</a>
+{% endif %}
+{% endblock %}

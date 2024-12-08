@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Pagar Multa</h2>
+
+<p>Estás a punto de pagar la multa de {{ multa.monto }}.</p>
+<p>¿Estás seguro de que deseas continuar?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar Pago</button>
+</form>
+
+<a href="{% url 'mis_multas' %}">Cancelar</a>
+{% endblock %}

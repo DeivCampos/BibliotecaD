@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Historial de Préstamos</h2> 
+<ul> 
+    {% for prestamo in prestamos %}
+         <li>{{ prestamo.libro.titulo }} - Estado: {{ prestamo.estado }}</li> 
+    {% endfor %} 
+</ul> 
+
+{% endblock %}

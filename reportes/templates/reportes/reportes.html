@@ -1,0 +1,15 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Reportes Generales</h2>
+<ul>
+    <li>Préstamos realizados: {{ prestamos_realizados }}</li>
+    <li>Libros solicitados: {{ libros_solicitados }}</li>
+    <li>Multas generadas: {{ multas_generadas }}</li>
+    <li>Ventas realizadas: {{ ventas_realizadas }}</li>
+</ul>
+<a href="{% url 'libros_mas_solicitados' %}">Libros más solicitados</a><br>
+<a href="{% url 'multas_por_usuario' %}">Multas por usuario</a><br>
+<a href="{% url 'ventas_realizadas' %}">Ventas realizadas</a><br>
+{% endblock %}

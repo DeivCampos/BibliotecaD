@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center text-primary font-weight-bold">Bienvenido, Usuario</h2>
+    <p class="text-center text-muted mb-4">Descubre los servicios disponibles en nuestra biblioteca.</p>
+    
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-light">
+                <div class="card-header bg-success text-white text-center">
+                    <h4 class="mb-0">Servicios Disponibles</h4>
+                </div>
+                <div class="card-body">
+                    <nav>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="{% url 'listar_libros' %}" class="text-success">Catálogo de Libros</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{% url 'historial_prestamos' %}" class="text-success">Historial de Préstamos</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{% url 'mis_reservas' %}" class="text-success">Mis Reservas</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{% url 'mis_multas' %}" class="text-success">Mis Multas</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

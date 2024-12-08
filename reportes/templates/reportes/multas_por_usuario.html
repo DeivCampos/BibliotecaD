@@ -1,0 +1,12 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Multas por Usuario</h2>
+<ul>
+    {% for multa in multas %}
+    <li>{{ multa.usuario__username }} - Total de multas: {{ multa.total_multas }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'reportes_generales' %}">Volver a reportes generales</a>
+{% endblock %}

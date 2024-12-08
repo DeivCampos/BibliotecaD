@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Historial de Préstamos</h2>
+
+<table>
+    <tr>
+        <th>Libro</th>
+        <th>Fecha de Préstamo</th>
+        <th>Estado</th>
+        <th>Acciones</th>  <!-- Nueva columna para acciones -->
+    </tr>
+    {% for prestamo in prestamos %}
+    <tr>
+        <td>{{ prestamo.libro.titulo }}</td>
+        <td>{{ prestamo.fecha_prestamo }}</td>
+        <td>{{ prestamo.estado }}</td>
+        {% if prestamo.estado == 'activo' %}
+        <td><a href="{% url 'devolver_prestamo' prestamo.id %}">Devolver</a></td>
+        {% else %}
+        <td></td>  <!-- Espacio vacío si ya fue devuelto -->
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{% url 'listar_libros' %}">Volver a la lista de libros</a>
+{% endblock %}

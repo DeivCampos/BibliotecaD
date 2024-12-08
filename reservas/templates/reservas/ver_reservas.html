@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Reservas</h2>
+
+<table>
+    <tr>
+        <th>Usuario</th>
+        <th>Libro</th>
+        <th>Fecha de Reserva</th>
+        <th>Estado</th>
+        <th>Acciones</th> <!-- Nueva columna para acciones -->
+    </tr>
+    {% for reserva in reservas %}
+    <tr>
+        <td>{{ reserva.usuario.username }}</td>
+        <td>{{ reserva.libro.titulo }}</td>
+        <td>{{ reserva.fecha_reserva }}</td>
+        <td>{{ reserva.estado }}</td>
+        <td>
+            <a href="{% url 'eliminar_reserva' reserva.id %}">Eliminar</a> <!-- Botón para eliminar -->
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5">No hay reservas.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{% url 'listar_libros' %}">Volver a la lista de libros</a>
+{% endblock %}

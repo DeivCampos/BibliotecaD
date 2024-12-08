@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Libros Más Solicitados</h2>
+<ul>
+    {% for libro in libros %}
+    <li>{{ libro.titulo }} - Solicitudes: {{ libro.num_solicitudes }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'reportes_generales' %}">Volver a reportes generales</a>
+{% endblock %}

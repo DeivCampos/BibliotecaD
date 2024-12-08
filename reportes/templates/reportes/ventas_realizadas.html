@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Ventas Realizadas</h2>
+<ul>
+    {% for venta in ventas %}
+    <li>{{ venta.libro__titulo }} - Total de ventas: {{ venta.total_ventas }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'reportes_generales' %}">Volver a reportes generales</a>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Gestor de Usuarios</h2>
+
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Acciones</th> <!-- Nueva columna para acciones -->
+    </tr>
+    {% for usuario in usuarios %}
+    <tr>
+        <td>{{ usuario.username }}</td>
+        <td>{{ usuario.email }}</td>
+        <td>{{ usuario.role }}</td>
+        <td>
+            <a href="{% url 'editar_usuario' usuario.id %}">Editar</a> | 
+            <a href="{% url 'eliminar_usuario' usuario.id %}">Eliminar</a> <!-- Botón para eliminar -->
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4">No hay usuarios.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{% url 'index' %}">Volver al panel de administración</a>
+{% endblock %}
