@@ -1,15 +1,52 @@
-
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Reportes Generales</h2>
-<ul>
-    <li>Préstamos realizados: {{ prestamos_realizados }}</li>
-    <li>Libros solicitados: {{ libros_solicitados }}</li>
-    <li>Multas generadas: {{ multas_generadas }}</li>
-    <li>Ventas realizadas: {{ ventas_realizadas }}</li>
-</ul>
-<a href="{% url 'libros_mas_solicitados' %}">Libros más solicitados</a><br>
-<a href="{% url 'multas_por_usuario' %}">Multas por usuario</a><br>
-<a href="{% url 'ventas_realizadas' %}">Ventas realizadas</a><br>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Reportes Generales</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Préstamos Realizados</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ prestamos_realizados }}</h5>
+                    <p class="card-text">Total de préstamos realizados hasta la fecha.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Libros Solicitados</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ libros_solicitados }}</h5>
+                    <p class="card-text">Número total de libros solicitados.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card text-white bg-danger mb-3">
+                <div class="card-header">Multas Generadas</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ multas_generadas }}</h5>
+                    <p class="card-text">Total de multas generadas hasta ahora.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-header">Ventas Realizadas</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ ventas_realizadas }}</h5>
+                    <p class="card-text">Número total de ventas realizadas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <a href="{% url 'libros_mas_solicitados' %}" class="btn btn-info">Libros más solicitados</a>
+        <a href="{% url 'multas_por_usuario' %}" class="btn btn-danger">Multas por usuario</a>
+        <a href="{% url 'ventas_realizadas' %}" class="btn btn-warning">Ventas realizadas</a>
+    </div>
+</div>
 {% endblock %}

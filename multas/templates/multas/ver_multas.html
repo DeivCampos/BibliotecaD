@@ -1,32 +1,57 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Multas</h2>
+<div class="container mt-5">
+    <h2 class="text-center text-primary font-weight-bold">Multas</h2>
 
-<table>
-    <tr>
-        <th>Usuario</th>
-        <th>Prestamo</th>
-        <th>Monto</th>
-        <th>Estado</th>
-        <th>Acciones</th> <!-- Nueva columna para acciones -->
-    </tr>
-    {% for multa in multas %}
-    <tr>
-        <td>{{ multa.usuario.username }}</td>
-        <td>{{ multa.prestamo.id }}</td> <!-- O el título del libro si lo prefieres -->
-        <td>{{ multa.monto }}</td>
-        <td>{{ multa.estado }}</td>
-        <td>
-            <a href="{% url 'eliminar_multa' multa.id %}">Eliminar</a> <!-- Botón para eliminar -->
-        </td>
-    </tr>
-    {% empty %}
-    <tr>
-        <td colspan="5">No hay multas.</td>
-    </tr>
-    {% endfor %}
-</table>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Usuario</th>
+                    <th>Prestamo</th>
+                    <th>Monto</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for multa in multas %}
+                <tr>
+                    <td>{{ multa.usuario.username }}</td>
+                    <td>{{ multa.prestamo.id }}</td> <!-- O el título del libro si lo prefieres -->
+                    <td>{{ multa.monto }}</td>
+                    <td>{{ multa.estado }}</td>
+                    <td>
+                        <a href="{% url 'eliminar_multa' multa.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No hay multas.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
-<a href="{% url 'index' %}">Volver al panel de administración</a>
+    <div class="text-center mt-4">
+        <a href="{% url 'index' %}" class="btn btn-primary">Volver al panel de administración</a>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa; /* Color de fondo suave */
+    }
+    h2 {
+        margin-bottom: 20px; /* Espacio debajo del título */
+    }
+    .table th, .table td {
+        vertical-align: middle; /* Centrar verticalmente el contenido de las celdas */
+    }
+    .table-hover tbody tr:hover {
+        background-color: #e9ecef; /* Color de fondo al pasar el mouse sobre las filas */
+    }
+</style>
 {% endblock %}

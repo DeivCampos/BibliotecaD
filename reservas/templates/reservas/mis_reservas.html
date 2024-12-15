@@ -1,26 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Mis Reservas</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Mis Reservas</h2>
 
-<table>
-    <tr>
-        <th>Título</th>
-        <th>Autor</th>
-        <th>Fecha de Reserva</th>
-    </tr>
-    {% for reserva in reservas %}
-    <tr>
-        <td>{{ reserva.libro.titulo }}</td>
-        <td>{{ reserva.libro.autor }}</td>
-        <td>{{ reserva.fecha_reserva }}</td>
-    </tr>
-    {% empty %}
-    <tr>
-        <td colspan="3">No tienes reservas.</td>
-    </tr>
-    {% endfor %}
-</table>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Fecha de Reserva</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reserva in reservas %}
+                <tr>
+                    <td>{{ reserva.libro.titulo }}</td>
+                    <td>{{ reserva.libro.autor }}</td>
+                    <td>{{ reserva.fecha_reserva }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3" class="text-center">No tienes reservas.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
-<a href="{% url 'listar_libros' %}">Volver a la lista de libros</a>
+    <div class="text-center mt-4">
+        <a href="{% url 'listar_libros' %}" class="btn btn-primary">Volver a la lista de libros</a>
+    </div>
+</div>
 {% endblock %}
